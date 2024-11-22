@@ -1,3 +1,64 @@
-[gd_scene format=3 uid="uid://bx3sr0sv4qgar"]
+[gd_scene load_steps=9 format=3 uid="uid://bx3sr0sv4qgar"]
+
+[ext_resource type="Texture2D" uid="uid://bonm3uafgns8x" path="res://icon.svg" id="1_1qvdp"]
+[ext_resource type="PackedScene" uid="uid://badndl7nqkp0j" path="res://Player/Player.tscn" id="2_e32e6"]
+[ext_resource type="PackedScene" uid="uid://cycbceil3scoe" path="res://Items/bullet.tscn" id="3_mxafs"]
+[ext_resource type="Script" path="res://Levels/respawn_point.gd" id="4_h61ha"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k0tld"]
+size = Vector2(127.359, 124)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2dilh"]
+size = Vector2(125.344, 217)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7h45"]
+size = Vector2(126.946, 230.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2fab"]
+size = Vector2(51.8123, 108)
 
 [node name="World" type="Node"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(463, 526)
+scale = Vector2(6.24219, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-0.881096, -2)
+shape = SubResource("RectangleShape2D_k0tld")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D"]
+position = Vector2(0.881096, 2)
+texture = ExtResource("1_1qvdp")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(127.039, -186.5)
+shape = SubResource("RectangleShape2D_2dilh")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D3"]
+position = Vector2(0.881096, 2)
+texture = ExtResource("1_1qvdp")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-98.0425, -311)
+shape = SubResource("RectangleShape2D_f7h45")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D4"]
+position = Vector2(0.881096, 2)
+texture = ExtResource("1_1qvdp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(92.3892, -82)
+shape = SubResource("RectangleShape2D_g2fab")
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("2_e32e6")]
+position = Vector2(205, 369)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="bullet" parent="." instance=ExtResource("3_mxafs")]
+position = Vector2(523, 391)
+
+[node name="Respawn point" type="Node2D" parent="."]
+position = Vector2(152, 408)
+script = ExtResource("4_h61ha")
