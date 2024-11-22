@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 
 const SPEED = 500.0 # Base horizontal movement speed
-const ACCELERATION = 800.0 # Base acceleration
-const FRICTION = 3000.0 # Base friction
+const ACCELERATION = 1200.0 # Base acceleration
+const FRICTION = 3500.0 # Base friction
 const GRAVITY = 2000.0 # Gravity when moving upwards
 const FALL_GRAVITY = 3000.0 # Gravity when falling downwards
 const FAST_FALL_GRAVITY = 5000.0 # Gravity while holding "fast_fall"
@@ -21,8 +21,16 @@ var can_doublejump = true
 var input_buffer : Timer # Reference to the input queue timer
 var coyote_timer : Timer # Reference to the coyote timer
 var coyote_jump_available := true
+var idle = true
+var isJumping = false
+
+
+var ghost_scene = preload("res://Player/dash_ghost.tscn")
+
+@onready var sprite = $Sprite2D
 
 func _ready() -> void:
+	get_tree().root.print_tree_pretty()
 	add_to_group("player")
 	# Set up input buffer timer
 	input_buffer = Timer.new()
@@ -44,7 +52,9 @@ func _physics_process(delta) -> void:
 	var horizontal_input := Input.get_axis("move_left", "move_right")
 	var jump_attempted := Input.is_action_just_pressed("jump")
 	if is_on_wall():
+		isJumping = true
 		$Sprite2D.play("jump")
+		
 		# Apply gravity and reset coyote jump
 	if is_on_floor():
 		can_doublejump = true
@@ -53,8 +63,10 @@ func _physics_process(delta) -> void:
 	else:
 		if coyote_jump_available:
 			if coyote_timer.is_stopped():
+				
 				coyote_timer.start()
-		velocity.y += get_gravityy(horizontal_input) * delta
+				
+		velocity.y += get_gravityy(horizontal_input) * delta 
 
 	# HYandle horizontal motion and friction
 	var floor_damping := 1.0 if is_on_floor() else 0.5 # Set floor damping, friction is less when in air
@@ -67,18 +79,21 @@ func _physics_process(delta) -> void:
 			$Sprite2D/AnimatedSprite2D.play("jump_effect")
 			$Sprite2D/AnimatedSprite2D.play("idle")
 			coyote_jump_available = false
+			isJumping = true
 		elif !is_on_floor() and can_doublejump and !is_on_wall():
 			velocity.y = JUMP_VELOCITY
 			can_doublejump = false
 			$Sprite2D.play("double_jump")
 			$Sprite2D/AnimatedSprite2D.play("jump_effect")
+			isJumping = true
 		elif is_on_wall(): # If jumping off a wall
 			velocity.y = WALL_JUMP_VELOCITY
 			velocity.x = WALL_JUMP_PUSHBACK * -sign(horizontal_input)
 		elif jump_attempted: # Queue input buffer if jump was attempted
+			
 			input_buffer.start()
 	elif horizontal_input < 0:
-		velocity.x = move_toward(velocity.x, horizontal_input * SPEED, ACCELERATION * delta)
+		velocity.x = move_toward(velocity.x, horizontal_input * SPEED, ACCELERATION * delta )
 		$Sprite2D.flip_h = true
 		$Sprite2D.offset.x = -10
 		$Sprite2D/AnimatedSprite2D.flip_h = true
@@ -86,7 +101,7 @@ func _physics_process(delta) -> void:
 		if is_on_floor():
 			$Sprite2D.play("run")
 	elif horizontal_input > 0:
-		velocity.x = move_toward(velocity.x, horizontal_input * SPEED, ACCELERATION * delta)
+		velocity.x = move_toward(velocity.x, horizontal_input * SPEED, ACCELERATION * delta )
 		$Sprite2D.flip_h = false
 		$Sprite2D.offset.x = 10
 		$Sprite2D/AnimatedSprite2D.flip_h = false
@@ -95,9 +110,10 @@ func _physics_process(delta) -> void:
 			$Sprite2D.play("run")
 		
 	else:
-		velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * floor_damping)
+		velocity.x = move_toward(velocity.x, 0, (FRICTION * delta ) * floor_damping)
 		$Sprite2D/AnimatedSprite2D.play("idle")
-		if is_on_floor() and $Sprite2D.animation != "dash":
+		idle = true
+		if is_on_floor():
 			$Sprite2D.play("idle")
 		if ($Sprite2D.flip_h):
 			$Sprite2D.offset.x = -10
@@ -120,6 +136,19 @@ func get_gravityy(input_dir : float = 0) -> float:
 ## Reset coyote jump
 func coyote_timeout() -> void:
 	coyote_jump_available = false
+
+func instance_ghost():
+	var ghost: Sprite2D = ghost_scene.instantiate()
+	get_parent().get_parent().add_child(ghost)
+	
+		# these 3 lines are new
+	var current_frame_index = sprite.frame
+	var frame = sprite.sprite_frames.get_frame_texture("run", current_frame_index)
+	ghost.texture = frame
+	
+	ghost.global_position = global_position
+	ghost.scale = Vector2(3,3)
+	ghost.flip_h = sprite.flip_h
 	
 func dash():
 	if is_on_floor():
@@ -131,11 +160,10 @@ func dash():
 	
 	if Input.is_action_just_pressed("dash") and canDash:
 		velocity = dashDirection.normalized() * 1200
-		$Sprite2D.play("dash")
+		instance_ghost()
 		canDash = false
 		dashing = true
 		await get_tree().create_timer(0.2).timeout
 		dashing = false
-
-
+		
 	

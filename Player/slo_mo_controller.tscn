@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8rjoq8m83ycd"]
+
+[ext_resource type="Script" path="res://slo_mo_controller.gd" id="1_wo7jv"]
+
+[node name="SloMoController" type="Node2D"]
+script = ExtResource("1_wo7jv")

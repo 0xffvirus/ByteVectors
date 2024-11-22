@@ -1,8 +1,7 @@
-[gd_scene load_steps=68 format=3 uid="uid://badndl7nqkp0j"]
+[gd_scene load_steps=61 format=3 uid="uid://badndl7nqkp0j"]
 
 [ext_resource type="Script" path="res://Player/Player_Movement.gd" id="1_v66l0"]
 [ext_resource type="Texture2D" uid="uid://cl1ohy1ey4gf1" path="res://Player/Player - Animations 1/2 Punk/Punk_death.png" id="2_5x8pn"]
-[ext_resource type="Texture2D" uid="uid://b5nd18hen3u2p" path="res://Player/Extra animations/2/Dash.png" id="2_ap121"]
 [ext_resource type="Texture2D" uid="uid://cv8ipgmvmpgcq" path="res://Player/Player - Animations 1/2 Punk/Punk_idle.png" id="2_e6sle"]
 [ext_resource type="Texture2D" uid="uid://csspc2je2ia2g" path="res://Player/Player - Animations 1/2 Punk/Punk_doublejump.png" id="3_4jh0p"]
 [ext_resource type="Texture2D" uid="uid://dm5i5t7yu1duc" path="res://Player/Player - Animations 1/2 Punk/Punk_run.png" id="3_dxuwm"]
@@ -12,30 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://b2yg0si12gw83" path="res://Player/Player - Animations 1/2 Punk/Punk_jump.png" id="6_2l2m7"]
 [ext_resource type="Texture2D" uid="uid://babn2b2cd75ug" path="res://Player/Extra animations/2/Use.png" id="10_4bfqe"]
 [ext_resource type="Texture2D" uid="uid://cyrnbvn4wupgr" path="res://Player/Effects Animations/1 Smoke/5.png" id="12_exib1"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tnfiw"]
-atlas = ExtResource("2_ap121")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xhr73"]
-atlas = ExtResource("2_ap121")
-region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8amdq"]
-atlas = ExtResource("2_ap121")
-region = Rect2(96, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5tr1p"]
-atlas = ExtResource("2_ap121")
-region = Rect2(144, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qah5q"]
-atlas = ExtResource("2_ap121")
-region = Rect2(192, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cnbau"]
-atlas = ExtResource("2_ap121")
-region = Rect2(240, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_txx4j"]
 atlas = ExtResource("2_5x8pn")
@@ -207,29 +182,6 @@ region = Rect2(240, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tane2"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tnfiw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xhr73")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8amdq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5tr1p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qah5q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cnbau")
-}],
-"loop": false,
-"name": &"dash",
-"speed": 15.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_txx4j")
@@ -462,7 +414,7 @@ script = ExtResource("1_v66l0")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.333333, -13.6667)
 sprite_frames = SubResource("SpriteFrames_tane2")
-animation = &"dash"
+animation = &"death"
 autoplay = "idle"
 offset = Vector2(10, 0)
 
@@ -470,10 +422,8 @@ offset = Vector2(10, 0)
 position = Vector2(-0.333333, 4.66667)
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_s4030")
-animation = &"jump_effect"
+animation = &"idle"
 autoplay = "idle"
-frame = 4
-frame_progress = 1.0
 offset = Vector2(-10, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

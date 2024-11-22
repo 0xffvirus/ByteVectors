@@ -1,0 +1,268 @@
+[gd_scene load_steps=20 format=3 uid="uid://djae1gam2siui"]
+
+[ext_resource type="Texture2D" uid="uid://cabkhixroxiq" path="res://background/background.png" id="1_y8ih4"]
+[ext_resource type="PackedScene" uid="uid://badndl7nqkp0j" path="res://Player/Player.tscn" id="4_swt18"]
+[ext_resource type="PackedScene" uid="uid://c8rjoq8m83ycd" path="res://Player/slo_mo_controller.tscn" id="6_hory4"]
+[ext_resource type="Script" path="res://Levels/animation_player.gd" id="6_o5diw"]
+[ext_resource type="Script" path="res://Levels/animation_player_2.gd" id="7_qbpph"]
+[ext_resource type="PackedScene" uid="uid://dhn4t0vx62ifr" path="res://Player/elecr_anim.tscn" id="8_7ls3g"]
+[ext_resource type="PackedScene" uid="uid://cmpkw30r6escs" path="res://Player/enemy.tscn" id="9_jh3s6"]
+[ext_resource type="Script" path="res://Levels/respawn_point.gd" id="9_svsta"]
+[ext_resource type="PackedScene" uid="uid://ci4i04qa56a70" path="res://Levels/lv1-new-.tscn" id="12_1ro4q"]
+
+[sub_resource type="Animation" id="Animation_c8u2s"]
+resource_name = "ElectroParticles"
+length = 5.0
+
+[sub_resource type="Animation" id="Animation_kivrl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemies/Enemy2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2074, 1170)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Enemies/Enemy3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3401, 1453)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Enemies/Enemy:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3401, 885)]
+}
+
+[sub_resource type="Animation" id="Animation_ja8sg"]
+resource_name = "Enemy_H"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemies/Enemy3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(3401, 1453), Vector2(2313, 1453), Vector2(3401, 1453)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Enemies/Enemy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.533333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(3401, 885), Vector2(2409, 885), Vector2(3401, 885)]
+}
+
+[sub_resource type="Animation" id="Animation_plq7b"]
+resource_name = "Enemy_HL"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemies/Enemy2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.133333, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2074, 1170), Vector2(3026, 1170), Vector2(2074, 1170)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mdxh8"]
+_data = {
+"ElectroParticles": SubResource("Animation_c8u2s"),
+"Enemy_H": SubResource("Animation_ja8sg"),
+"Enemy_HL": SubResource("Animation_plq7b"),
+"RESET": SubResource("Animation_kivrl")
+}
+
+[sub_resource type="Animation" id="Animation_0ey8i"]
+resource_name = "Enemy_HL"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Enemies/Enemy2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 0.433333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2074, 1170), Vector2(3026, 1170), Vector2(2074, 1170)]
+}
+
+[sub_resource type="Animation" id="Animation_wlq7v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Enemies/Enemy2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2074, 1170)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jjxna"]
+_data = {
+"Enemy_HL": SubResource("Animation_0ey8i"),
+"RESET": SubResource("Animation_wlq7v")
+}
+
+[sub_resource type="Gradient" id="Gradient_17yse"]
+offsets = PackedFloat32Array(0, 0.689157)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n704r"]
+gradient = SubResource("Gradient_17yse")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -49.0
+offset_top = -194.0
+offset_right = 1833.0
+offset_bottom = 704.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_y8ih4")
+
+[node name="Node2D" parent="." instance=ExtResource("12_1ro4q")]
+position = Vector2(0, -16)
+
+[node name="Player" parent="." instance=ExtResource("4_swt18")]
+position = Vector2(28, 294)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2.5, 2.5)
+limit_left = 0
+limit_top = -100
+limit_smoothed = true
+
+[node name="SloMoController" parent="." instance=ExtResource("6_hory4")]
+
+[node name="Respawn point" type="Node2D" parent="."]
+position = Vector2(59, 354)
+script = ExtResource("9_svsta")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationTree"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_mdxh8")
+}
+script = ExtResource("6_o5diw")
+
+[node name="AnimationPlayer3" type="AnimationPlayer" parent="AnimationTree"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_mdxh8")
+}
+autoplay = "Enemy_H"
+script = ExtResource("6_o5diw")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="AnimationTree"]
+libraries = {
+"": SubResource("AnimationLibrary_jjxna")
+}
+autoplay = "Enemy_HL"
+script = ExtResource("7_qbpph")
+
+[node name="Lights" type="Node" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="Lights"]
+position = Vector2(1427, 303)
+scale = Vector2(2.29746, 1.46151)
+color = Color(0, 1, 1, 1)
+texture = SubResource("GradientTexture2D_n704r")
+texture_scale = 5.57
+
+[node name="PointLight2D4" type="PointLight2D" parent="Lights"]
+position = Vector2(1100, 503)
+scale = Vector2(0.800886, 0.312781)
+color = Color(0, 1, 1, 1)
+texture = SubResource("GradientTexture2D_n704r")
+texture_scale = 5.57
+
+[node name="PointLight2D5" type="PointLight2D" parent="Lights"]
+position = Vector2(2386, 685)
+scale = Vector2(0.927823, 0.333118)
+color = Color(0, 1, 1, 1)
+texture = SubResource("GradientTexture2D_n704r")
+texture_scale = 5.57
+
+[node name="PointLight2D2" type="PointLight2D" parent="Lights"]
+position = Vector2(509, 192)
+scale = Vector2(2.29746, 1.46151)
+color = Color(0, 1, 1, 1)
+texture = SubResource("GradientTexture2D_n704r")
+texture_scale = 5.57
+
+[node name="PointLight2D3" type="PointLight2D" parent="Lights"]
+position = Vector2(913, 327)
+scale = Vector2(0.499677, 0.529833)
+color = Color(1, 0.00999999, 0.0264997, 1)
+texture = SubResource("GradientTexture2D_n704r")
+texture_scale = 5.57
+
+[node name="PointLight2D6" type="PointLight2D" parent="Lights"]
+position = Vector2(910, 465)
+scale = Vector2(0.499677, 0.529833)
+color = Color(1, 0.00999999, 0.0264997, 1)
+texture = SubResource("GradientTexture2D_n704r")
+texture_scale = 5.57
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Area2D" parent="Enemies" instance=ExtResource("8_7ls3g")]
+position = Vector2(2373, 711)
+
+[node name="Area2D2" parent="Enemies" instance=ExtResource("8_7ls3g")]
+position = Vector2(1078, 525)
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("9_jh3s6")]
+position = Vector2(3401, 885)
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource("9_jh3s6")]
+position = Vector2(3401, 1453)
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource("9_jh3s6")]
+position = Vector2(2074, 1170)
