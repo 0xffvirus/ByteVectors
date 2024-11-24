@@ -1,18 +1,212 @@
-[gd_scene load_steps=20 format=3 uid="uid://djae1gam2siui"]
+[gd_scene load_steps=47 format=3 uid="uid://djae1gam2siui"]
 
+[ext_resource type="Script" path="res://Levels/lv_1.gd" id="1_5ux47"]
 [ext_resource type="Texture2D" uid="uid://cabkhixroxiq" path="res://background/background.png" id="1_y8ih4"]
+[ext_resource type="Texture2D" uid="uid://tr6mut477hxm" path="res://background/back.png" id="3_4nin0"]
+[ext_resource type="Texture2D" uid="uid://5gri0ki4h2xi" path="res://background/back3.png" id="4_3o30h"]
 [ext_resource type="PackedScene" uid="uid://badndl7nqkp0j" path="res://Player/Player.tscn" id="4_swt18"]
 [ext_resource type="PackedScene" uid="uid://c8rjoq8m83ycd" path="res://Player/slo_mo_controller.tscn" id="6_hory4"]
-[ext_resource type="Script" path="res://Levels/animation_player.gd" id="6_o5diw"]
-[ext_resource type="Script" path="res://Levels/animation_player_2.gd" id="7_qbpph"]
+[ext_resource type="Script" path="res://Levels/animationPlayers/animation_player.gd" id="6_o5diw"]
+[ext_resource type="Script" path="res://Levels/animationPlayers/animation_player_2.gd" id="7_qbpph"]
 [ext_resource type="PackedScene" uid="uid://dhn4t0vx62ifr" path="res://Player/elecr_anim.tscn" id="8_7ls3g"]
+[ext_resource type="Script" path="res://Levels/animationPlayers/animation_player_4.gd" id="9_iecir"]
 [ext_resource type="PackedScene" uid="uid://cmpkw30r6escs" path="res://Player/enemy.tscn" id="9_jh3s6"]
-[ext_resource type="Script" path="res://Levels/respawn_point.gd" id="9_svsta"]
+[ext_resource type="Script" path="res://Levels/SpawnPoints/respawn_point.gd" id="9_svsta"]
+[ext_resource type="PackedScene" uid="uid://ca4btngob3e8e" path="res://lamp_light.tscn" id="10_x2cul"]
+[ext_resource type="PackedScene" uid="uid://ygy867xmlcgk" path="res://enemy_extended.tscn" id="11_beogn"]
 [ext_resource type="PackedScene" uid="uid://ci4i04qa56a70" path="res://Levels/lv1-new-.tscn" id="12_1ro4q"]
+[ext_resource type="Script" path="res://Levels/animationPlayers/animation_player_5.gd" id="12_lysas"]
+[ext_resource type="Script" path="res://Levels/SpawnPoints/spawn_point_1.gd" id="14_c4oix"]
+[ext_resource type="AudioStream" uid="uid://bqm7nv0dy46oi" path="res://sounds/effects/jump.wav" id="15_oda3r"]
+[ext_resource type="AudioStream" uid="uid://b2v8jadyb4d1g" path="res://sounds/effects/smash.wav" id="16_omeho"]
+[ext_resource type="Script" path="res://Levels/SpawnPoints/spawn_point_2.gd" id="17_728fh"]
+[ext_resource type="AudioStream" uid="uid://csskph00roewy" path="res://sounds/effects/Explosion.wav" id="17_bpwwv"]
+[ext_resource type="Script" path="res://Levels/SpawnPoints/spawn_point_3.gd" id="18_bhnbr"]
+[ext_resource type="AudioStream" uid="uid://nilgkiaityrq" path="res://sounds/effects/dash.wav" id="18_snsne"]
+[ext_resource type="AudioStream" uid="uid://b4l84yymixjg7" path="res://sounds/effects/Death.wav" id="19_kvtmh"]
+[ext_resource type="AudioStream" uid="uid://b6gmjg6kvmg8i" path="res://sounds/music/AdhesiveWombat - Night Shade  NO COPYRIGHT 8-bit Music.mp3" id="20_61nqu"]
+[ext_resource type="PackedScene" uid="uid://cd7kweuc8rs7b" path="res://UI/time_counter.tscn" id="21_glg66"]
+[ext_resource type="PackedScene" uid="uid://dgmq6vhwocqg2" path="res://winning_mnsa.tscn" id="26_capsp"]
+[ext_resource type="PackedScene" uid="uid://bcqng38u6ktej" path="res://card.tscn" id="28_q6ybf"]
 
 [sub_resource type="Animation" id="Animation_c8u2s"]
 resource_name = "ElectroParticles"
 length = 5.0
+
+[sub_resource type="Animation" id="Animation_ja8sg"]
+resource_name = "Enemy_H"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemies/Enemy3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(3401, 1453), Vector2(2313, 1453), Vector2(3401, 1453)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Enemies/Enemy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.533333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(3401, 885), Vector2(2409, 885), Vector2(3401, 885)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Enemies/EnemyExtended:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333333, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(3808, 2218), Vector2(3808, 1935.5), Vector2(3808, 2218)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Enemies/Enemy4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(7200, 1437), Vector2(5784, 1437), Vector2(7200, 1437)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Enemies/Enemy5:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.466667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(7637, 1273), Vector2(7341, 1273), Vector2(7637, 1273)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Enemies/Enemy6:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.466667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(7637, 1034), Vector2(7341, 1034), Vector2(7637, 1034)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Enemies/Enemy7:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(7641, 650), Vector2(7349, 650), Vector2(7641, 650)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Enemies/Enemy9:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(7491, 454), Vector2(7491, 1270), Vector2(7491, 454)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Enemies/EnemyExtended2:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(4339, 1895), Vector2(4339, 1479), Vector2(4339, 1895)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Enemies/EnemyExtended3:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(4337, 2365), Vector2(4337, 1997), Vector2(4337, 2365)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Enemies/Enemy13:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.533333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2074, 1738), Vector2(3058, 1738), Vector2(2074, 1738)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Enemies/Enemy14:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(3401, 2029), Vector2(2521, 2029), Vector2(3401, 2029)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Enemies/Enemy10:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0.0333333, 0.566667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(7638, 843), Vector2(7342, 843), Vector2(7638, 843)]
+}
+
+[sub_resource type="Animation" id="Animation_plq7b"]
+resource_name = "Enemy_HL"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemies/Enemy2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.133333, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2074, 1170), Vector2(3026, 1170), Vector2(2074, 1170)]
+}
 
 [sub_resource type="Animation" id="Animation_kivrl"]
 length = 0.001
@@ -52,48 +246,137 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(3401, 885)]
 }
-
-[sub_resource type="Animation" id="Animation_ja8sg"]
-resource_name = "Enemy_H"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Enemies/Enemy3:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.0333333, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Enemies/EnemyExtended:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(3401, 1453), Vector2(2313, 1453), Vector2(3401, 1453)]
+"values": [Vector2(3808, 2218)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Enemies/Enemy:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.533333, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Enemies/Enemy4:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(3401, 885), Vector2(2409, 885), Vector2(3401, 885)]
+"values": [Vector2(7200, 1437)]
 }
-
-[sub_resource type="Animation" id="Animation_plq7b"]
-resource_name = "Enemy_HL"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Enemies/Enemy2:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.133333, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Enemies/Enemy5:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(2074, 1170), Vector2(3026, 1170), Vector2(2074, 1170)]
+"values": [Vector2(7637, 1273)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Enemies/Enemy6:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(7637, 1034)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Enemies/Enemy7:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(7641, 650)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Enemies/Enemy9:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(7491, 454)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Enemies/EnemyExtended2:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4339, 1895)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Enemies/EnemyExtended3:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4337, 2365)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Enemies/Enemy13:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2074, 1738)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Enemies/Enemy14:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3401, 2029)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Enemies/Enemy10:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(7638, 843)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mdxh8"]
@@ -120,6 +403,208 @@ tracks/0/keys = {
 "values": [Vector2(2074, 1170), Vector2(3026, 1170), Vector2(2074, 1170)]
 }
 
+[sub_resource type="Shader" id="Shader_i7cet"]
+code = "/*
+Shader from Godot Shaders - the free shader library.
+
+This shader is under CC0 license. Feel free to use, improve and
+change this shader according to your needs and consider sharing
+the modified result to godotshaders.com.
+
+Optimised and packed by @c64cosmin
+If you do use this please share it with me
+Would love to see what you're making with it <3
+
+It's a combination of these two shaders
+~godotshaders.com/shader/VHS-and-CRT-monitor-effect
+godotshaders.com/shader/crt-shader-with-realistic-blurring/
+
+CRT grille and rolling lines made by @c64cosmin
+Vignette and warping effect was made by pend00
+Scanlines are from \"TimothyLottes\" FROM SHADERTOY
+Then ported by AHOPNESS (@ahopness)
+https://www.shadertoy.com/view/MsjXzh
+*/
+
+shader_type canvas_item;
+
+uniform sampler2D SCREEN_TEXTURE: hint_screen_texture;
+
+uniform vec2 resolution = vec2(320.0, 180.0);
+
+uniform float scan_line_amount :hint_range(0.0, 1.0) = 1.0;
+uniform float warp_amount :hint_range(0.0, 5.0) = 0.1;
+uniform float noise_amount :hint_range(0.0, 0.3) = 0.03;
+uniform float interference_amount :hint_range(0.0, 1.0) = 0.2;
+uniform float grille_amount :hint_range(0.0, 1.0) = 0.1;
+uniform float grille_size :hint_range(1.0, 5.0) = 1.0;
+uniform float vignette_amount :hint_range(0.0, 2.0) = 0.6;
+uniform float vignette_intensity : hint_range(0.0, 1.0) = 0.4;
+uniform float aberation_amount :hint_range(0.0, 1.0) = 0.5;
+uniform float roll_line_amount :hint_range(0.0, 1.0) = 0.3;
+uniform float roll_speed :hint_range(-8.0, 8.0) = 1.0;
+uniform float scan_line_strength :hint_range(-12.0, -1.0) = -8.0;
+uniform float pixel_strength :hint_range(-4.0, 0.0) = -2.0;
+
+float random(vec2 uv){
+    return fract(cos(uv.x * 83.4827 + uv.y * 92.2842) * 43758.5453123);
+}
+
+vec3 fetch_pixel(vec2 uv, vec2 off){
+	vec2 pos = floor(uv * resolution + off) / resolution + vec2(0.5) / resolution;
+
+	float noise = 0.0;
+	if(noise_amount > 0.0){
+		noise = random(pos + fract(TIME)) * noise_amount;
+	}
+
+	if(max(abs(pos.x - 0.5), abs(pos.y - 0.5)) > 0.5){
+		return vec3(0.0, 0.0, 0.0);
+	}
+
+	vec3 clr = texture(SCREEN_TEXTURE , pos, -16.0).rgb + noise;
+	return clr;
+}
+
+// Distance in emulated pixels to nearest texel.
+vec2 Dist(vec2 pos){
+	pos = pos * resolution;
+	return - ((pos - floor(pos)) - vec2(0.5));
+}
+
+// 1D Gaussian.
+float Gaus(float pos, float scale){ return exp2(scale * pos * pos); }
+
+// 3-tap Gaussian filter along horz line.
+vec3 Horz3(vec2 pos, float off){
+	vec3 b = fetch_pixel(pos, vec2(-1.0, off));
+	vec3 c = fetch_pixel(pos, vec2( 0.0, off));
+	vec3 d = fetch_pixel(pos, vec2( 1.0, off));
+	float dst = Dist(pos).x;
+
+	// Convert distance to weight.
+	float scale = pixel_strength;
+	float wb = Gaus(dst - 1.0, scale);
+	float wc = Gaus(dst + 0.0, scale);
+	float wd = Gaus(dst + 1.0, scale);
+
+	// Return filtered sample.
+	return (b * wb + c * wc + d * wd) / (wb + wc + wd);
+}
+
+// Return scanline weight.
+float Scan(vec2 pos, float off){
+	float dst = Dist(pos).y;
+
+	return Gaus(dst + off, scan_line_strength);
+}
+
+// Allow nearest three lines to effect pixel.
+vec3 Tri(vec2 pos){
+	vec3 clr = fetch_pixel(pos, vec2(0.0));
+	if(scan_line_amount > 0.0){
+		vec3 a = Horz3(pos,-1.0);
+		vec3 b = Horz3(pos, 0.0);
+		vec3 c = Horz3(pos, 1.0);
+
+		float wa = Scan(pos,-1.0);
+		float wb = Scan(pos, 0.0);
+		float wc = Scan(pos, 1.0);
+
+		vec3 scanlines = a * wa + b * wb + c * wc;
+		clr = mix(clr, scanlines, scan_line_amount);
+	}
+	return clr;
+}
+
+// Takes in the UV and warps the edges, creating the spherized effect
+vec2 warp(vec2 uv){
+	vec2 delta = uv - 0.5;
+	float delta2 = dot(delta.xy, delta.xy);
+	float delta4 = delta2 * delta2;
+	float delta_offset = delta4 * warp_amount;
+
+	vec2 warped = uv + delta * delta_offset;
+	return (warped - 0.5) / mix(1.0,1.2,warp_amount/5.0) + 0.5;
+}
+
+float vignette(vec2 uv){
+	uv *= 1.0 - uv.xy;
+	float vignette = uv.x * uv.y * 15.0;
+	return pow(vignette, vignette_intensity * vignette_amount);
+}
+
+float floating_mod(float a, float b){
+	return a - b * floor(a/b);
+}
+
+vec3 grille(vec2 uv){
+	float unit = PI / 3.0;
+	float scale = 2.0*unit/grille_size;
+	float r = smoothstep(0.5, 0.8, cos(uv.x*scale - unit));
+	float g = smoothstep(0.5, 0.8, cos(uv.x*scale + unit));
+	float b = smoothstep(0.5, 0.8, cos(uv.x*scale + 3.0*unit));
+	return mix(vec3(1.0), vec3(r,g,b), grille_amount);
+}
+
+float roll_line(vec2 uv){
+	float x = uv.y * 3.0 - TIME * roll_speed;
+	float f = cos(x) * cos(x * 2.35 + 1.1) * cos(x * 4.45 + 2.3);
+	float roll_line = smoothstep(0.5, 0.9, f);
+	return roll_line * roll_line_amount;
+}
+
+void fragment(){
+	vec2 pix = FRAGCOORD.xy;
+	vec2 pos = warp(SCREEN_UV);
+
+	float line = 0.0;
+	if(roll_line_amount > 0.0){
+		line = roll_line(pos);
+	}
+
+	vec2 sq_pix = floor(pos * resolution) / resolution + vec2(0.5) / resolution;
+	if(interference_amount + roll_line_amount > 0.0){
+		float interference = random(sq_pix.yy + fract(TIME));
+		pos.x += (interference * (interference_amount + line * 6.0)) / resolution.x;
+	}
+
+	vec3 clr = Tri(pos);
+	if(aberation_amount > 0.0){
+		float chromatic = aberation_amount + line * 2.0;
+		vec2 chromatic_x = vec2(chromatic,0.0) / resolution.x;
+		vec2 chromatic_y = vec2(0.0, chromatic/2.0) / resolution.y;
+		float r = Tri(pos - chromatic_x).r;
+		float g = Tri(pos + chromatic_y).g;
+		float b = Tri(pos + chromatic_x).b;
+		clr = vec3(r,g,b);
+	}
+
+	if(grille_amount > 0.0)clr *= grille(pix);
+	clr *= 1.0 + scan_line_amount * 0.6 + line * 3.0 + grille_amount * 2.0;
+	if(vignette_amount > 0.0)clr *= vignette(pos);
+
+	COLOR.rgb = clr;
+	COLOR.a = 1.0;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ium1"]
+shader = SubResource("Shader_i7cet")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/scan_line_amount = 0.048
+shader_parameter/warp_amount = 1.5
+shader_parameter/noise_amount = 0.0
+shader_parameter/interference_amount = 0.111
+shader_parameter/grille_amount = 0.02
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.6
+shader_parameter/vignette_intensity = 0.198
+shader_parameter/aberation_amount = 0.16
+shader_parameter/roll_line_amount = 0.225
+shader_parameter/roll_speed = 1.277
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
+
 [sub_resource type="Animation" id="Animation_wlq7v"]
 length = 0.001
 tracks/0/type = "value"
@@ -134,25 +619,269 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(2074, 1170)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Slow_Overlay/ColorRect:material")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("ShaderMaterial_0ium1")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Slow_Overlay/ColorRect:material:shader_parameter/warp_amount")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5]
+}
+
+[sub_resource type="Animation" id="Animation_neg1c"]
+resource_name = "SlowMo_Effect"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Slow_Overlay/ColorRect:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("ShaderMaterial_0ium1"), SubResource("ShaderMaterial_0ium1")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Slow_Overlay/ColorRect:material:shader_parameter/warp_amount")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0666667, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.7, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_tqjvx"]
+resource_name = "SlowMo_ending"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Slow_Overlay/ColorRect:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Slow_Overlay/ColorRect:material:shader_parameter/warp_amount")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jjxna"]
 _data = {
 "Enemy_HL": SubResource("Animation_0ey8i"),
-"RESET": SubResource("Animation_wlq7v")
+"RESET": SubResource("Animation_wlq7v"),
+"SlowMo_Effect": SubResource("Animation_neg1c"),
+"SlowMo_ending": SubResource("Animation_tqjvx")
 }
 
-[sub_resource type="Gradient" id="Gradient_17yse"]
+[sub_resource type="Animation" id="Animation_kcdyl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Elevators/winning_mnsa:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(9424, 1623)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Enemies/Enemy8:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(9482.04, 645)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Enemies/Enemy15:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(9486.51, 951)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Enemies/Enemy16:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(9481.6, 1211)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Elevators/winning_mnsa2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(7839, 1620)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Elevators/winning_mnsa3:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(9299, 1337)]
+}
+
+[sub_resource type="Animation" id="Animation_ip2t0"]
+resource_name = "big_objects"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Elevators/winning_mnsa:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 1.93333, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(9424, 1623), Vector2(8440, 1623), Vector2(9424, 1623)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Enemies/Enemy8:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 2.03333, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(9482.04, 645), Vector2(10000, 645), Vector2(9482.04, 645)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Enemies/Enemy15:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333333, 1.96667, 4.06667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(9486.51, 951), Vector2(10000, 951), Vector2(9486.51, 951)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Enemies/Enemy16:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0333333, 1.83333, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(9481.6, 1211), Vector2(10000, 1211), Vector2(9481.6, 1211)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Elevators/winning_mnsa2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.133333, 1.86667, 3.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(7839, 1620), Vector2(7839, 1100), Vector2(7839, 1620)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Elevators/winning_mnsa3:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.0333333, 1.86667, 3.86667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(9299, 1337), Vector2(9299, 1150), Vector2(9299, 1337)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ady3f"]
+_data = {
+"RESET": SubResource("Animation_kcdyl"),
+"big_objects": SubResource("Animation_ip2t0")
+}
+
+[sub_resource type="Gradient" id="Gradient_2kney"]
 offsets = PackedFloat32Array(0, 0.689157)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_n704r"]
-gradient = SubResource("Gradient_17yse")
+gradient = SubResource("Gradient_2kney")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0kp80"]
+size = Vector2(148, 179.5)
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Level_1" type="Node2D"]
+script = ExtResource("1_5ux47")
+
+[node name="Background 1" type="TextureRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -164,23 +893,44 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_y8ih4")
 
-[node name="Node2D" parent="." instance=ExtResource("12_1ro4q")]
-position = Vector2(0, -16)
+[node name="Background 2" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7254.0
+offset_top = 330.0
+offset_right = 10057.0
+offset_bottom = 1956.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_4nin0")
+
+[node name="Background 3" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3482.0
+offset_top = 1222.0
+offset_right = 4954.0
+offset_bottom = 2768.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_3o30h")
+
+[node name="Map" parent="." instance=ExtResource("12_1ro4q")]
+position = Vector2(-8, -16)
 
 [node name="Player" parent="." instance=ExtResource("4_swt18")]
-position = Vector2(28, 294)
+position = Vector2(31.001, 320)
+scale = Vector2(2.5, 2.5)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(2.5, 2.5)
+zoom = Vector2(1.5, 1.5)
 limit_left = 0
 limit_top = -100
 limit_smoothed = true
 
 [node name="SloMoController" parent="." instance=ExtResource("6_hory4")]
-
-[node name="Respawn point" type="Node2D" parent="."]
-position = Vector2(59, 354)
-script = ExtResource("9_svsta")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 
@@ -206,6 +956,20 @@ libraries = {
 autoplay = "Enemy_HL"
 script = ExtResource("7_qbpph")
 
+[node name="AnimationPlayer4" type="AnimationPlayer" parent="AnimationTree"]
+libraries = {
+"": SubResource("AnimationLibrary_jjxna")
+}
+autoplay = "SlowMo_Effect"
+script = ExtResource("9_iecir")
+
+[node name="AnimationPlayer5" type="AnimationPlayer" parent="AnimationTree"]
+libraries = {
+"": SubResource("AnimationLibrary_ady3f")
+}
+autoplay = "big_objects"
+script = ExtResource("12_lysas")
+
 [node name="Lights" type="Node" parent="."]
 
 [node name="PointLight2D" type="PointLight2D" parent="Lights"]
@@ -214,6 +978,157 @@ scale = Vector2(2.29746, 1.46151)
 color = Color(0, 1, 1, 1)
 texture = SubResource("GradientTexture2D_n704r")
 texture_scale = 5.57
+
+[node name="PointLight2D7" type="PointLight2D" parent="Lights"]
+position = Vector2(3976, 2461)
+scale = Vector2(2.29746, 1.37455)
+color = Color(0, 1, 1, 1)
+texture = SubResource("GradientTexture2D_n704r")
+texture_scale = 5.57
+
+[node name="PointLight2D8" type="PointLight2D" parent="Lights"]
+position = Vector2(4328, 2461)
+scale = Vector2(2.29746, 1.37455)
+color = Color(0, 1, 1, 1)
+texture = SubResource("GradientTexture2D_n704r")
+texture_scale = 5.57
+
+[node name="PointLight2D9" type="PointLight2D" parent="Lights"]
+position = Vector2(4704, 2461)
+scale = Vector2(2.29746, 1.37455)
+color = Color(0, 1, 1, 1)
+texture = SubResource("GradientTexture2D_n704r")
+texture_scale = 5.57
+
+[node name="PointLight2D17" type="PointLight2D" parent="Lights"]
+position = Vector2(4755, 1913)
+scale = Vector2(2.29746, 1.37455)
+color = Color(0, 1, 1, 1)
+texture = SubResource("GradientTexture2D_n704r")
+texture_scale = 5.57
+
+[node name="PointLight2D18" type="PointLight2D" parent="Lights"]
+position = Vector2(4395, 1918)
+scale = Vector2(2.29746, 1.37455)
+color = Color(0, 1, 1, 1)
+texture = SubResource("GradientTexture2D_n704r")
+texture_scale = 5.57
+
+[node name="PointLight2D21" type="PointLight2D" parent="Lights"]
+position = Vector2(4190, 1415)
+scale = Vector2(0.652209, 0.942549)
+color = Color(1, 0, 0.0999999, 1)
+texture = SubResource("GradientTexture2D_n704r")
+texture_scale = 5.57
+
+[node name="PointLight2D22" type="PointLight2D" parent="Lights"]
+position = Vector2(4740, 1412)
+scale = Vector2(0.652209, 0.942549)
+color = Color(1, 0, 0.0999999, 1)
+texture = SubResource("GradientTexture2D_n704r")
+texture_scale = 5.57
+
+[node name="PointLight2D19" type="PointLight2D" parent="Lights"]
+position = Vector2(4011, 1921)
+scale = Vector2(2.29746, 1.37455)
+color = Color(0, 1, 1, 1)
+texture = SubResource("GradientTexture2D_n704r")
+texture_scale = 5.57
+
+[node name="PointLight2D20" type="PointLight2D" parent="Lights"]
+position = Vector2(3884, 1918)
+scale = Vector2(2.29746, 1.37455)
+color = Color(0, 1, 1, 1)
+texture = SubResource("GradientTexture2D_n704r")
+texture_scale = 5.57
+
+[node name="PointLight2D10" type="PointLight2D" parent="Lights"]
+position = Vector2(5202, 1332)
+scale = Vector2(2.29746, 1.37455)
+color = Color(0, 0.58, 0.58, 1)
+energy = 2.8
+texture = SubResource("GradientTexture2D_n704r")
+texture_scale = 6.34
+
+[node name="PointLight2D11" type="PointLight2D" parent="Lights"]
+position = Vector2(5570, 1332)
+scale = Vector2(2.29746, 1.37455)
+color = Color(0, 0.58, 0.58, 1)
+energy = 2.8
+texture = SubResource("GradientTexture2D_n704r")
+texture_scale = 6.34
+
+[node name="PointLight2D12" type="PointLight2D" parent="Lights"]
+position = Vector2(5908, 1228)
+scale = Vector2(2.29746, 1.37455)
+color = Color(0, 0.58, 0.58, 1)
+energy = 2.8
+texture = SubResource("GradientTexture2D_n704r")
+texture_scale = 6.34
+
+[node name="PointLight2D14" type="PointLight2D" parent="Lights"]
+position = Vector2(6588, 1284)
+scale = Vector2(2.29746, 1.37455)
+color = Color(0, 0.58, 0.58, 1)
+energy = 2.8
+texture = SubResource("GradientTexture2D_n704r")
+texture_scale = 6.34
+
+[node name="PointLight2D15" type="PointLight2D" parent="Lights"]
+position = Vector2(6860, 1348)
+scale = Vector2(2.29746, 1.37455)
+color = Color(0, 0.58, 0.58, 1)
+energy = 2.8
+texture = SubResource("GradientTexture2D_n704r")
+texture_scale = 6.34
+
+[node name="PointLight2D26" type="PointLight2D" parent="Lights"]
+position = Vector2(8095.5, 898)
+scale = Vector2(0.510152, 1.37455)
+color = Color(0, 0.58, 0.58, 1)
+energy = 2.8
+texture = SubResource("GradientTexture2D_n704r")
+texture_scale = 6.34
+
+[node name="PointLight2D25" type="PointLight2D" parent="Lights"]
+position = Vector2(8995, 1740.93)
+scale = Vector2(6.71333, 0.803107)
+color = Color(0, 0.58, 0.58, 1)
+energy = 2.8
+texture = SubResource("GradientTexture2D_n704r")
+texture_scale = 6.34
+
+[node name="PointLight2D16" type="PointLight2D" parent="Lights"]
+position = Vector2(8533, 1015)
+scale = Vector2(6.72319, 4.07137)
+color = Color(1.05888e-06, 0.587931, 0.519664, 1)
+energy = 3.78
+texture = SubResource("GradientTexture2D_n704r")
+texture_scale = 6.34
+
+[node name="PointLight2D24" type="PointLight2D" parent="Lights"]
+position = Vector2(7501.56, 898.438)
+scale = Vector2(1.39214, 3.16228)
+color = Color(1.05888e-06, 0.587931, 0.519664, 1)
+energy = 1.73
+texture = SubResource("GradientTexture2D_n704r")
+texture_scale = 6.34
+
+[node name="PointLight2D23" type="PointLight2D" parent="Lights"]
+position = Vector2(10279, 983)
+scale = Vector2(6.72319, 4.07137)
+color = Color(1.05888e-06, 0.587931, 0.519664, 1)
+energy = 0.99
+texture = SubResource("GradientTexture2D_n704r")
+texture_scale = 6.34
+
+[node name="PointLight2D13" type="PointLight2D" parent="Lights"]
+position = Vector2(6268, 1308)
+scale = Vector2(2.29746, 1.37455)
+color = Color(0.657503, 0.306591, 0.880905, 1)
+energy = 2.8
+texture = SubResource("GradientTexture2D_n704r")
+texture_scale = 6.34
 
 [node name="PointLight2D4" type="PointLight2D" parent="Lights"]
 position = Vector2(1100, 503)
@@ -258,11 +1173,247 @@ position = Vector2(2373, 711)
 [node name="Area2D2" parent="Enemies" instance=ExtResource("8_7ls3g")]
 position = Vector2(1078, 525)
 
+[node name="Area2D6" parent="Enemies" instance=ExtResource("8_7ls3g")]
+position = Vector2(7921, 1732)
+
+[node name="Area2D7" parent="Enemies" instance=ExtResource("8_7ls3g")]
+position = Vector2(8294, 1731)
+
+[node name="Area2D14" parent="Enemies" instance=ExtResource("8_7ls3g")]
+position = Vector2(8108, 921)
+rotation = 1.5708
+scale = Vector2(0.571758, 1)
+
+[node name="Area2D15" parent="Enemies" instance=ExtResource("8_7ls3g")]
+position = Vector2(8007, 859)
+scale = Vector2(0.571758, 1)
+
+[node name="Area2D13" parent="Enemies" instance=ExtResource("8_7ls3g")]
+position = Vector2(8348, 1219)
+rotation = 1.5708
+scale = Vector2(0.680005, 1)
+
+[node name="Area2D8" parent="Enemies" instance=ExtResource("8_7ls3g")]
+position = Vector2(8676, 1729)
+
+[node name="Area2D9" parent="Enemies" instance=ExtResource("8_7ls3g")]
+position = Vector2(9044, 1729)
+
+[node name="Area2D10" parent="Enemies" instance=ExtResource("8_7ls3g")]
+position = Vector2(9451, 1725)
+
+[node name="Area2D11" parent="Enemies" instance=ExtResource("8_7ls3g")]
+position = Vector2(9830, 1725)
+
+[node name="Area2D12" parent="Enemies" instance=ExtResource("8_7ls3g")]
+position = Vector2(9765, 1681)
+scale = Vector2(0.293782, 1)
+
+[node name="Area2D3" parent="Enemies" instance=ExtResource("8_7ls3g")]
+position = Vector2(3917, 2492)
+
+[node name="Area2D4" parent="Enemies" instance=ExtResource("8_7ls3g")]
+position = Vector2(4285, 2492)
+
+[node name="Area2D5" parent="Enemies" instance=ExtResource("8_7ls3g")]
+position = Vector2(4676, 2492)
+
 [node name="Enemy" parent="Enemies" instance=ExtResource("9_jh3s6")]
 position = Vector2(3401, 885)
+scale = Vector2(1.5, 1.5)
 
 [node name="Enemy3" parent="Enemies" instance=ExtResource("9_jh3s6")]
 position = Vector2(3401, 1453)
+scale = Vector2(1.5, 1.5)
+
+[node name="Enemy14" parent="Enemies" instance=ExtResource("9_jh3s6")]
+position = Vector2(3401, 2029)
+scale = Vector2(1.5, 1.5)
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource("9_jh3s6")]
 position = Vector2(2074, 1170)
+scale = Vector2(1.5, 1.5)
+
+[node name="Enemy13" parent="Enemies" instance=ExtResource("9_jh3s6")]
+position = Vector2(2074, 1738)
+scale = Vector2(1.5, 1.5)
+
+[node name="Enemy5" parent="Enemies" instance=ExtResource("9_jh3s6")]
+position = Vector2(7637, 1273)
+
+[node name="Enemy6" parent="Enemies" instance=ExtResource("9_jh3s6")]
+position = Vector2(7637, 1034)
+
+[node name="Enemy10" parent="Enemies" instance=ExtResource("9_jh3s6")]
+position = Vector2(7638, 843)
+
+[node name="Enemy7" parent="Enemies" instance=ExtResource("9_jh3s6")]
+position = Vector2(7641, 650)
+
+[node name="Enemy9" parent="Enemies" instance=ExtResource("9_jh3s6")]
+position = Vector2(7491, 454)
+
+[node name="Enemy4" parent="Enemies" instance=ExtResource("9_jh3s6")]
+position = Vector2(7200, 1437)
+scale = Vector2(3, 3)
+
+[node name="Enemy8" parent="Enemies" instance=ExtResource("9_jh3s6")]
+position = Vector2(9482.04, 645)
+scale = Vector2(3, 3)
+
+[node name="Enemy15" parent="Enemies" instance=ExtResource("9_jh3s6")]
+position = Vector2(9486.51, 951)
+scale = Vector2(3, 3)
+
+[node name="Enemy16" parent="Enemies" instance=ExtResource("9_jh3s6")]
+position = Vector2(9481.6, 1211)
+scale = Vector2(3, 3)
+
+[node name="EnemyExtended" parent="Enemies" instance=ExtResource("11_beogn")]
+position = Vector2(3808, 2218)
+rotation = 1.5708
+scale = Vector2(2, 1.5)
+
+[node name="EnemyExtended2" parent="Enemies" instance=ExtResource("11_beogn")]
+position = Vector2(4339, 1895)
+rotation = 1.5708
+scale = Vector2(1.2, 1.5)
+
+[node name="EnemyExtended3" parent="Enemies" instance=ExtResource("11_beogn")]
+position = Vector2(4337, 2365)
+rotation = 1.5708
+scale = Vector2(2, 1.5)
+
+[node name="Objects" type="Node" parent="."]
+
+[node name="Sprite2D" parent="Objects" instance=ExtResource("10_x2cul")]
+position = Vector2(1846, 263)
+scale = Vector2(1.70833, 1.70833)
+
+[node name="Sprite2D2" parent="Objects" instance=ExtResource("10_x2cul")]
+position = Vector2(2062, 265)
+scale = Vector2(1.70833, 1.70833)
+
+[node name="Sprite2D3" parent="Objects" instance=ExtResource("10_x2cul")]
+position = Vector2(2548, 258)
+scale = Vector2(1.70833, 1.70833)
+
+[node name="Slow_Overlay" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Slow_Overlay"]
+material = SubResource("ShaderMaterial_0ium1")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Timer" type="CanvasLayer" parent="."]
+
+[node name="time_counter" parent="Timer" instance=ExtResource("21_glg66")]
+position = Vector2(349, 160)
+
+[node name="SpawnPoints" type="Node" parent="."]
+
+[node name="Spawn_Point1" type="Area2D" parent="SpawnPoints"]
+position = Vector2(2390, 2222)
+script = ExtResource("14_c4oix")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnPoints/Spawn_Point1"]
+position = Vector2(16, -9)
+shape = SubResource("RectangleShape2D_0kp80")
+
+[node name="PointLight2D25" type="PointLight2D" parent="SpawnPoints/Spawn_Point1"]
+visible = false
+position = Vector2(8.9999, -4.99991)
+scale = Vector2(0.718132, 0.701302)
+color = Color(0.970161, 0.89305, 0, 1)
+energy = 2.0
+texture = SubResource("GradientTexture2D_n704r")
+texture_scale = 5.57
+
+[node name="Spawn_Point2" type="Area2D" parent="SpawnPoints"]
+position = Vector2(7467, 1480)
+script = ExtResource("17_728fh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnPoints/Spawn_Point2"]
+position = Vector2(5, -17)
+shape = SubResource("RectangleShape2D_0kp80")
+
+[node name="PointLight2D26" type="PointLight2D" parent="SpawnPoints/Spawn_Point2"]
+visible = false
+position = Vector2(4.00049, -14)
+scale = Vector2(0.718132, 0.701302)
+color = Color(0.970161, 0.89305, 0, 1)
+energy = 2.0
+texture = SubResource("GradientTexture2D_n704r")
+texture_scale = 5.57
+
+[node name="Spawn_Point3" type="Area2D" parent="SpawnPoints"]
+position = Vector2(9495, 459)
+script = ExtResource("18_bhnbr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnPoints/Spawn_Point3"]
+position = Vector2(-2, -14)
+shape = SubResource("RectangleShape2D_0kp80")
+
+[node name="PointLight2D27" type="PointLight2D" parent="SpawnPoints/Spawn_Point3"]
+visible = false
+position = Vector2(1, -11)
+scale = Vector2(0.718132, 0.701302)
+color = Color(0.970161, 0.89305, 0, 1)
+energy = 2.0
+texture = SubResource("GradientTexture2D_n704r")
+texture_scale = 5.57
+
+[node name="Respawn point" type="Node2D" parent="SpawnPoints"]
+position = Vector2(59, 354)
+script = ExtResource("9_svsta")
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Jump_Sound" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("15_oda3r")
+volume_db = -22.0
+
+[node name="Smash_Sound" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("16_omeho")
+
+[node name="Explosion_Sound" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("17_bpwwv")
+
+[node name="Dash_Sound" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("18_snsne")
+volume_db = -22.0
+
+[node name="Death_Sound" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("19_kvtmh")
+
+[node name="Background_musc" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("20_61nqu")
+volume_db = -22.0
+parameters/looping = true
+
+[node name="Elevators" type="Node" parent="."]
+
+[node name="winning_mnsa" parent="Elevators" instance=ExtResource("26_capsp")]
+position = Vector2(9424, 1623)
+scale = Vector2(0.8, 0.8)
+
+[node name="winning_mnsa2" parent="Elevators" instance=ExtResource("26_capsp")]
+position = Vector2(7839, 1620)
+scale = Vector2(0.8, 0.8)
+
+[node name="winning_mnsa3" parent="Elevators" instance=ExtResource("26_capsp")]
+position = Vector2(9299, 1337)
+scale = Vector2(0.8, 0.8)
+
+[node name="card" parent="." instance=ExtResource("28_q6ybf")]
+position = Vector2(7849, 729)
+scale = Vector2(2, 2)
+
+[connection signal="animation_finished" from="AnimationTree/AnimationPlayer4" to="AnimationTree/AnimationPlayer4" method="_on_animation_finished"]
+[connection signal="body_entered" from="SpawnPoints/Spawn_Point1" to="SpawnPoints/Spawn_Point1" method="_on_body_entered"]
+[connection signal="body_entered" from="SpawnPoints/Spawn_Point2" to="SpawnPoints/Spawn_Point2" method="_on_body_entered"]
+[connection signal="body_entered" from="SpawnPoints/Spawn_Point3" to="SpawnPoints/Spawn_Point3" method="_on_body_entered"]

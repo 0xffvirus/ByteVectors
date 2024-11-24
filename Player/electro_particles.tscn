@@ -78,7 +78,6 @@ script = ExtResource("2_sx1ex")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
 position = Vector2(53.8579, -5.63867)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_mslfk")
 
 [connection signal="body_entered" from="Area2D2" to="Area2D2" method="_on_body_entered"]

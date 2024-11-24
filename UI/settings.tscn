@@ -1,0 +1,289 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdspgpbxy4uvt"]
+
+[ext_resource type="Theme" uid="uid://cad3ai3sxik1n" path="res://UI/byte_theme.tres" id="1_qxosg"]
+[ext_resource type="Script" path="res://UI/settings.gd" id="2_bpjdu"]
+[ext_resource type="FontFile" uid="uid://cgnsba01s1t0u" path="res://UI/assessts/NotJamFontPack/Not Jam Laika 11/Not Jam Laika 14.ttf" id="3_755fx"]
+
+[node name="settings" type="Popup"]
+transparent_bg = true
+initial_position = 1
+size = Vector2i(920, 590)
+visible = true
+min_size = Vector2i(920, 590)
+theme = ExtResource("1_qxosg")
+script = ExtResource("2_bpjdu")
+
+[node name="background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_qxosg")
+color = Color(0.435192, 0.435192, 0.435192, 1)
+
+[node name="SettingsTabs" type="TabContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 10
+theme = ExtResource("1_qxosg")
+current_tab = 0
+
+[node name="Video" type="TabBar" parent="SettingsTabs"]
+layout_mode = 2
+theme = ExtResource("1_qxosg")
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsTabs/Video"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -77.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="Videosettings" type="GridContainer" parent="SettingsTabs/Video/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = -11
+columns = 2
+
+[node name="DisplayMode" type="Label" parent="SettingsTabs/Video/MarginContainer/Videosettings"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 46
+text = "Display Mode"
+
+[node name="DisplayButton" type="OptionButton" parent="SettingsTabs/Video/MarginContainer/Videosettings"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 10
+theme = ExtResource("1_qxosg")
+theme_override_fonts/font = ExtResource("3_755fx")
+theme_override_font_sizes/font_size = 46
+alignment = 2
+icon_alignment = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "Windowed"
+popup/item_1/text = "Fullscreen"
+popup/item_1/id = 1
+
+[node name="Vsync Label" type="Label" parent="SettingsTabs/Video/MarginContainer/Videosettings"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 46
+text = "Vsync"
+
+[node name="VsyncButton" type="CheckButton" parent="SettingsTabs/Video/MarginContainer/Videosettings"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_stretch_ratio = 0.35
+theme = ExtResource("1_qxosg")
+
+[node name="DisplayFpsLabel" type="Label" parent="SettingsTabs/Video/MarginContainer/Videosettings"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 46
+text = "Display FPS"
+
+[node name="DisplayFps" type="CheckButton" parent="SettingsTabs/Video/MarginContainer/Videosettings"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_stretch_ratio = 0.35
+theme = ExtResource("1_qxosg")
+
+[node name="MAXFpsLabel2" type="Label" parent="SettingsTabs/Video/MarginContainer/Videosettings"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 46
+text = "Max FPS"
+
+[node name="MAXFPS" type="HBoxContainer" parent="SettingsTabs/Video/MarginContainer/Videosettings"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_stretch_ratio = 0.35
+theme = ExtResource("1_qxosg")
+
+[node name="MAXfpsValue" type="Label" parent="SettingsTabs/Video/MarginContainer/Videosettings/MAXFPS"]
+layout_mode = 2
+text = "Max"
+
+[node name="FPSSlider" type="HSlider" parent="SettingsTabs/Video/MarginContainer/Videosettings/MAXFPS"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+size_flags_horizontal = 10
+min_value = 30.0
+max_value = 500.0
+value = 500.0
+
+[node name="BrightnessLabel" type="Label" parent="SettingsTabs/Video/MarginContainer/Videosettings"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 46
+text = "Brightness"
+
+[node name="BrightnessSlider" type="HSlider" parent="SettingsTabs/Video/MarginContainer/Videosettings"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+size_flags_horizontal = 8
+step = 0.1
+value = 50.0
+
+[node name="Audio" type="TabBar" parent="SettingsTabs"]
+visible = false
+layout_mode = 2
+theme = ExtResource("1_qxosg")
+metadata/_tab_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsTabs/Audio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -77.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="Audio settings" type="GridContainer" parent="SettingsTabs/Audio/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = -11
+columns = 2
+
+[node name="MasterVolLabel" type="Label" parent="SettingsTabs/Audio/MarginContainer/Audio settings"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 46
+text = "Master Volume"
+
+[node name="MasterVolSlider" type="HSlider" parent="SettingsTabs/Audio/MarginContainer/Audio settings"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+size_flags_horizontal = 10
+min_value = -50.0
+max_value = 0.0
+value = -10.0
+
+[node name="MusicVolLabel2" type="Label" parent="SettingsTabs/Audio/MarginContainer/Audio settings"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 46
+text = "Music Volume"
+
+[node name="MusicVolSlider2" type="HSlider" parent="SettingsTabs/Audio/MarginContainer/Audio settings"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+size_flags_horizontal = 10
+min_value = -50.0
+max_value = 0.0
+value = -10.0
+
+[node name="SFXrVolLabel3" type="Label" parent="SettingsTabs/Audio/MarginContainer/Audio settings"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 46
+text = "SFX Volume"
+
+[node name="SFXVolSlider3" type="HSlider" parent="SettingsTabs/Audio/MarginContainer/Audio settings"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+size_flags_horizontal = 10
+min_value = -50.0
+max_value = 0.0
+value = -10.0
+
+[node name="Gameplay" type="TabBar" parent="SettingsTabs"]
+visible = false
+layout_mode = 2
+theme = ExtResource("1_qxosg")
+metadata/_tab_index = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsTabs/Gameplay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -77.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="Game settings" type="GridContainer" parent="SettingsTabs/Gameplay/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = -11
+columns = 2
+
+[node name="FovlLabel" type="Label" parent="SettingsTabs/Gameplay/MarginContainer/Game settings"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 46
+text = "FOV"
+
+[node name="FOVBox" type="HBoxContainer" parent="SettingsTabs/Gameplay/MarginContainer/Game settings"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_stretch_ratio = 0.35
+theme = ExtResource("1_qxosg")
+
+[node name="FovVal" type="Label" parent="SettingsTabs/Gameplay/MarginContainer/Game settings/FOVBox"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "70"
+
+[node name="FovSlider" type="HSlider" parent="SettingsTabs/Gameplay/MarginContainer/Game settings/FOVBox"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+size_flags_horizontal = 10
+min_value = 30.0
+value = 70.0
+
+[node name="MouseLabel2" type="Label" parent="SettingsTabs/Gameplay/MarginContainer/Game settings"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 46
+text = "Mouse sensitivity"
+
+[node name="MouseBox" type="HBoxContainer" parent="SettingsTabs/Gameplay/MarginContainer/Game settings"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_stretch_ratio = 0.35
+theme = ExtResource("1_qxosg")
+
+[node name="MouseVal" type="Label" parent="SettingsTabs/Gameplay/MarginContainer/Game settings/MouseBox"]
+layout_mode = 2
+text = ".1"
+
+[node name="MouseSlider2" type="HSlider" parent="SettingsTabs/Gameplay/MarginContainer/Game settings/MouseBox"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+size_flags_horizontal = 10
+min_value = 0.05
+max_value = 3.0
+step = 0.01
+value = 0.1
+exp_edit = true
+
+[connection signal="item_selected" from="SettingsTabs/Video/MarginContainer/Videosettings/DisplayButton" to="." method="_on_display_button_item_selected"]
+[connection signal="toggled" from="SettingsTabs/Video/MarginContainer/Videosettings/VsyncButton" to="." method="_on_vsync_button_toggled"]
+[connection signal="toggled" from="SettingsTabs/Video/MarginContainer/Videosettings/DisplayFps" to="." method="_on_display_fps_toggled"]
+[connection signal="value_changed" from="SettingsTabs/Video/MarginContainer/Videosettings/MAXFPS/FPSSlider" to="." method="_on_fps_slider_value_changed"]
+[connection signal="value_changed" from="SettingsTabs/Video/MarginContainer/Videosettings/BrightnessSlider" to="." method="_on_brightness_slider_value_changed"]
+[connection signal="value_changed" from="SettingsTabs/Audio/MarginContainer/Audio settings/MasterVolSlider" to="." method="_on_master_vol_slider_value_changed"]
+[connection signal="value_changed" from="SettingsTabs/Audio/MarginContainer/Audio settings/MusicVolSlider2" to="." method="_on_music_vol_slider_2_value_changed"]
+[connection signal="value_changed" from="SettingsTabs/Audio/MarginContainer/Audio settings/SFXVolSlider3" to="." method="_on_sfx_vol_slider_3_value_changed"]
+[connection signal="value_changed" from="SettingsTabs/Gameplay/MarginContainer/Game settings/FOVBox/FovSlider" to="." method="_on_fov_slider_value_changed"]
+[connection signal="value_changed" from="SettingsTabs/Gameplay/MarginContainer/Game settings/MouseBox/MouseSlider2" to="." method="_on_mouse_slider_2_value_changed"]

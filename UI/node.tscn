@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8l2wkxo6chkm"]
+
+[ext_resource type="Theme" uid="uid://cad3ai3sxik1n" path="res://byte_theme.tres" id="2_aibi5"]
+[ext_resource type="Texture2D" uid="uid://wn1gl3lde86n" path="res://assessts/66px_5zu1_230310.jpg" id="2_dhula"]
+[ext_resource type="Texture2D" uid="uid://ddokomh6ajqg7" path="res://assessts/New Piskel (1) (1).png" id="2_qh2jx"]
+
+[node name="Node" type="Node"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
+
+[node name="66Px5Zu1230310" type="Sprite2D" parent="."]
+position = Vector2(964, 548)
+scale = Vector2(0.305856, 0.301839)
+texture = ExtResource("2_dhula")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -161.0
+offset_top = 43.0
+offset_right = -51.0
+offset_bottom = 80.0
+grow_horizontal = 0
+theme = ExtResource("2_aibi5")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_right = 11
+theme_override_constants/margin_bottom = 1
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/PanelContainer/MarginContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("2_qh2jx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.6
+theme = ExtResource("2_aibi5")
+theme_override_font_sizes/font_size = 42
+text = "100"

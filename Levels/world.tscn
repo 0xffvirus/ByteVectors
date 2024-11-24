@@ -1,14 +1,14 @@
 [gd_scene load_steps=18 format=3 uid="uid://bx3sr0sv4qgar"]
 
-[ext_resource type="Texture2D" uid="uid://bonm3uafgns8x" path="res://icon.svg" id="1_1qvdp"]
+[ext_resource type="Texture2D" path="res://icon.svg" id="1_1qvdp"]
 [ext_resource type="Script" path="res://Levels/world.gd" id="1_uvlre"]
 [ext_resource type="PackedScene" uid="uid://badndl7nqkp0j" path="res://Player/Player.tscn" id="2_e32e6"]
 [ext_resource type="Texture2D" uid="uid://dol1oldth1kf2" path="res://Components/ExportedLayers.png" id="2_ljphh"]
 [ext_resource type="PackedScene" uid="uid://cycbceil3scoe" path="res://Items/bullet.tscn" id="3_mxafs"]
-[ext_resource type="Script" path="res://Levels/respawn_point.gd" id="4_h61ha"]
+[ext_resource type="Script" path="res://Levels/SpawnPoints/respawn_point.gd" id="4_h61ha"]
 [ext_resource type="PackedScene" uid="uid://c8rjoq8m83ycd" path="res://Player/slo_mo_controller.tscn" id="6_yjcmc"]
 [ext_resource type="PackedScene" uid="uid://ctt8hlj510ekp" path="res://Player/dead_zone.tscn" id="7_xxfcx"]
-[ext_resource type="Script" path="res://Levels/animation_player.gd" id="9_fwvvu"]
+[ext_resource type="Script" path="res://Levels/animationPlayers/animation_player.gd" id="9_fwvvu"]
 [ext_resource type="PackedScene" uid="uid://cvox5ysvk73b5" path="res://Player/dash_ghost.tscn" id="10_qvumy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k0tld"]
@@ -22,6 +22,21 @@ size = Vector2(126.946, 382.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2fab"]
 size = Vector2(51.8123, 108)
+
+[sub_resource type="Animation" id="Animation_aj47u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3.1239, -98)]
+}
 
 [sub_resource type="Animation" id="Animation_mbt8d"]
 resource_name = "move enemy"
@@ -37,21 +52,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(342, 406), Vector2(766, 406), Vector2(368.5, 406)]
-}
-
-[sub_resource type="Animation" id="Animation_aj47u"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(3.1239, -98)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_igo63"]

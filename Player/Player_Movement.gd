@@ -28,6 +28,8 @@ var isJumping = false
 var ghost_scene = preload("res://Player/dash_ghost.tscn")
 
 @onready var sprite = $Sprite2D
+@onready var jump_sound = $"../Audio/Jump_Sound"
+@onready var dash_sound = $"../Audio/Dash_Sound"
 
 func _ready() -> void:
 	get_tree().root.print_tree_pretty()
@@ -70,12 +72,12 @@ func _physics_process(delta) -> void:
 
 	# HYandle horizontal motion and friction
 	var floor_damping := 1.0 if is_on_floor() else 0.5 # Set floor damping, friction is less when in air
-
 	# Add the gravity and handle jumping
 	if jump_attempted or input_buffer.time_left > 0 :
 		if coyote_jump_available: # If jumping on the ground
 			velocity.y = JUMP_VELOCITY
 			$Sprite2D.play("jump")
+			jump_sound.play()
 			$Sprite2D/AnimatedSprite2D.play("jump_effect")
 			$Sprite2D/AnimatedSprite2D.play("idle")
 			coyote_jump_available = false
@@ -161,6 +163,7 @@ func dash():
 	if Input.is_action_just_pressed("dash") and canDash:
 		velocity = dashDirection.normalized() * 1200
 		instance_ghost()
+		dash_sound.play()
 		canDash = false
 		dashing = true
 		await get_tree().create_timer(0.2).timeout
